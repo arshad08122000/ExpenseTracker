@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ExpenseTracker</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+   
+    <!-- Syncfusion ASP.NET Core controls styles -->
+    @*<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/20.3.47/material.css" />*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.syncfusion.com/ej2/20.3.47/bootstrap5-dark.css" rel="stylesheet"/>
+     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ExpenseTracker.styles.css" asp-append-version="true" />
+    
+    ...
+    <!-- Syncfusion ASP.NET Core controls scripts -->
+    <script src="https://cdn.syncfusion.com/ej2/20.3.47/dist/ej2.min.js"></script>
+
+</head>
+<body class="e-bigger">
+    <partial name="_SideBar"/>
+    <div class="navbar sticky-top">
+        <div class="container-fluid py-2 px-4">
+            <img src="~/search_30px.png"/>
+            <div>
+                <img src="~/notification_30px.png"/>
+               <img src="~/sms_30px.png"/>
+                <img src="~/user_30px.png"/>
+            </div>
+        </div>
+        </div>
+    <div class="main-content"></div>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="@(ViewData["isDashboard"]==null?"col-md-10":"col-md-12")">
+                <main role="main" class="pb-3">
+                    @if(ViewData["isDashboard"]==null){
+                        <div class="row">
+                        <div class="col-md-7">
+                            <div clasa="d-flex flex-column mb-5">
+                                <div class="d-flex mb-1">
+                                    <div class="flex-grow-1">
+                                           <h3 class="fw-bold">@ViewData["pageTitle"]</h3>
+                                    </div>
+                                <div>
+                                @if(ViewData["PageActionText"]!=null)
+                                {
+                                    <a class="btn btn-success text-white" href="@ViewData["PageActionUrl"]">
+                                    @ViewData["PageActionText"]
+                                    </a>
+                                }
+                                </div>
+                                
+                                </div>
+                                <ejs-breadcrumb id="breadcrumb"></ejs-breadcrumb>
+                        </div>
+                       </div> 
+                       </div>
+                    }
+                    
+                   @RenderBody()
+                </main>
+            </div>
+        </div>
+        
+    </div>
+
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    
+    <!-- Syncfusion Script Manager -->
+    <ejs-scripts></ejs-scripts>
+
+</body>
+</html>

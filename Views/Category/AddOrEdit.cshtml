@@ -1,0 +1,57 @@
+﻿@model ExpenseTracker.Models.Category
+
+@{
+
+    ViewData["PageTitle"]
+    = Model.categoryid == 0 ? "Create New Category":"Edit Category";
+
+}
+
+<h4 class="mb-3">Category</h4>
+
+
+
+<hr />
+<div class="row">
+    <div class="col-md-7 mt-3">
+        <div class="widget p-5">
+            <form asp-action="AddOrEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="categoryid" value="@Model.categoryid"/>
+            <div class="mb-3">
+                <ejs-textbox id="title" name="title" placeholder="title" floatLabelType="Always" ejs-for="title"></ejs-textbox>
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <ejs-textbox id="icon" name="icon" placeholder="icon" floatLabelType="Always" ejs-for="icon"></ejs-textbox>
+                <span asp-validation-for="icon" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                 <div class='e-btn-group custom-rbt-group'>
+                      <input type="radio" id="radioleft" name="type" value="expense" checked="@(Model.type=="expense")"/>
+                      <label class="e-btn" for="radioleft">Expense</label>
+                     <input type="radio" id="radiomiddle" name="type" value="income" checked="@(Model.type=="income")"/>
+                     <label class="e-btn" for="radiomiddle">Income</label>
+                   </div>
+                <span asp-validation-for="type" class="text-danger"></span>
+            </div>
+            <ejs-button id="submit" cssClass="e-success" type="submit" content="Submit"></ejs-button>
+        </form>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <div class="widget h-70 d-flex justify-content-center align-item-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" ><path d="M160 224H416L288 0 160 224zm128 48V496H512V272H288zM128 512c70.7 0 128-57.3 128-128s-57.3-128-128-128S0 313.3 0 384s57.3 128 128 128z"/></svg>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+    
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

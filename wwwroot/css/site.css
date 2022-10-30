@@ -1,0 +1,96 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color:#12161d;
+  color:#fff;
+}
+
+.e-bigger{
+    font-size:x-large;
+}
+
+.widget{
+    border-radius:1rem;
+    background-color:#1a222b;
+}
+
+.widget.summary > div:first-child
+{
+    background-color:#222b33;
+    padding:1rem;
+    border-top-left-radius:1rem;
+    border-bottom-left-radius:1rem;
+}
+
+.widget.summary > div:first-child i{
+    font-weight:bold;
+}
+
+.widget.income>div:first-child{
+    color:#65da41;
+}
+
+
+    .widget.expense > div:first-child {
+        color: #ff4e48;
+    }
+
+
+    .widget.balance > div:first-child {
+        color: #2aa1ff;
+    }
+
+.widget .chart{
+    padding:5px;
+}
+    
+#sidebar{
+    background-color:#12161d;
+    border-right:1px dashed rgba(75,82,85,0,24);
+    padding:10px 20px;
+}
+
+#sidebar .e-menu-wrapper{
+    width:100%;
+    background-color:inherit;
+}
+
+.profile-wrapper{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding:16px 20px;
+    border-radius:12px;
+    cursor:pointer;
+    margin-bottom:30px;
+}
+
+.profile-wrapper .titles{
+    line-height:1;
+}
+
+.logo-wrapper{
+    height:70px;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+
+.app-logo{
+    padding:10px 20px;
+
+}

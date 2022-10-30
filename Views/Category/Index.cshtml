@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ExpenseTracker.Models.Category>
+
+@{
+    ViewData["PageTitle"]
+    = "Categories";
+    ViewData["PageActionText"] = "+ New Category";
+    ViewData["PageActionUrl"] = "/Category/AddOrEdit";
+}
+
+
+
+
+<div class="row">
+    <div class="col-md-7">
+        <ejs-grid id="categores" dataSource="@Model" gridLines="None" allowSorting="true" allowPaging="true">
+            <e-grid-pagesettings pageSize="8"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column headerText="Category" field="titlewithicon"></e-grid-column>
+                 <e-grid-column headerText="Type" template="#typeColumnTemplate" width="150px"></e-grid-column>
+                  <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="150px"></e-grid-column>
+
+            </e-grid-columns>
+        </ejs-grid>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-70 d-flex justify-content-center align-item-center" style="background-color:#212b36">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" ><path d="M160 224H416L288 0 160 224zm128 48V496H512V272H288zM128 512c70.7 0 128-57.3 128-128s-57.3-128-128-128S0 313.3 0 384s57.3 128 128 128z"/></svg>
+        </div>
+    </div>
+</div>
+
+<script id="typeColumnTemplate" type="text/x-template">
+    
+    ${if(type=="income")}
+      
+        <span class="badge bg-success">${type}</span>
+    
+    ${else}
+    
+        <span class="badge bg-danger">${type}</span>
+    
+    ${/if}
+    
+        
+</script>
+<script id="actionColumnTemplate" type="text/x-template">
+  
+  <div class="d-flex flex-row justify-content-start">  
+      <a class="btn btn-sm pl-3 btn-primary no-a-decoration" href="/Category/AddOrEdit/${categoryid}" style="color:white">Edit</a> 
+      <form method="post" class="px-2" action="/Category/Delete/${categoryid}">
+          @Html.AntiForgeryToken()
+          <button type="submit" class="btn btn-danger" onclick="return confirm(&quot;are u sure to delete?&quot;)">Delete</button></form>
+        </div>
+</script>

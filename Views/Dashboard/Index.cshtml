@@ -1,0 +1,111 @@
+﻿
+
+
+
+@{
+	ViewData["isDashboard"]=true;
+}
+
+<div class="row mb-4">
+	<div class="col-md-4">
+		<div class="d-flex flex-row widget summary income">
+		<div class="d-flex flex-column justify-content-center p-5"></div>
+		<div class="d-flex flex-column m-auto py-3">
+			<span class="lead">Total Income</span>
+			<h1 class="display-6 fw-bold">@ViewBag.totalincome</h1>
+		</div>
+	</div>
+    </div>
+	<div class="col-md-4">
+		<div class="d-flex flex-row widget summary expense">
+		<div class="d-flex flex-column justify-content-center p-5"></div>
+		<div class="d-flex flex-column m-auto py-3">
+			<span class="lead">Total Expense</span>
+			<h1 class="display-6 fw-bold">@ViewBag.totalexpense</h1>
+		</div>
+	</div>
+    </div>
+	<div class="col-md-4">
+		<div class="d-flex flex-row widget summary balance">
+		<div class="d-flex flex-column justify-content-center p-5"></div>
+		<div class="d-flex flex-column m-auto py-3">
+			<span class="lead">Total Balance</span>
+			<h1 class="display-6 fw-bold">@ViewBag.balance</h1>
+		</div>
+	</div>
+    </div>
+	</div>
+
+		<div class="row mb-4">
+			<div class="col-md-5">
+				<div class="widget chart">
+					<div class="p-4"><h5 class="fw-bold">Expense by category</h5></div>
+					<ejs-accumulationchart id="doughnutchart" background="#1a222b">
+						<e-accumulation-series-collection>
+							<e-accumulation-series dataSource="@ViewBag.ChartData" xName="categorytitlewithicon" yName="amount" innerRadius="40%" legendShape="Circle" palatte=@(new string[]{"#54ffa9","#ffe91a","#cb9b00","#8a442c"})>
+								<e-accumulationseries-datalabel name="formattedamount" visible></e-accumulationseries-datalabel>
+							</e-accumulation-series>
+							</e-accumulation-series-collection>
+							<e-accumulationchart-legendsettings position="Top" >
+								<e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
+							</e-accumulationchart-legendsettings>
+							<e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
+					</ejs-accumulationchart>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="widget chart">
+					<div class="p-4"><h5 class="fw-bold">Income vs Expense</h5></div>
+					<ejs-chart id="spline-chart" palettes="@(new string[]{"#54ffa9","#ffe91a"})">
+						<e-chart-primaryxaxis valueType="Category">
+							<e-majorgridlines width="0"></e-majorgridlines>
+							<e-majorticklines width="0"></e-majorticklines>
+						</e-chart-primaryxaxis>
+						<e-chart-primaryyaxis>
+						    <e-majorgridlines width="1" color="#321414d" dasharray="3,5"></e-majorgridlines>
+							<e-majorticklines width="0"></e-majorticklines>
+							<e-linestyle width="0"></e-linestyle>
+						</e-chart-primaryyaxis>
+						<e-chart-chartarea>
+							<e-chartarea-border></e-chartarea-border>
+						</e-chart-chartarea>
+						<e-series-collection><e-series dataSource="@ViewBag.splinechartdata" width="3" xName="day" yName="income" name="Income" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
+						<e-series dataSource="@ViewBag.splinechartdata" xName="day" yName="expense" name="Expense" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>	
+						</e-series-collection>
+						<e-chart-legendsettings position="Top" >
+								<e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
+							</e-chart-legendsettings>
+							<e-chart-tooltipsettings enable shared></e-chart-tooltipsettings>
+					</ejs-chart>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row mb-4">
+			<div class="col-md-5">
+				<div class="widget chart">
+					<div class="p-4"><h5 class="fw-bold">recent transaction</h5></div>
+					<div class="px-4 pb-4">
+						<ejs-grid id="transactiongrid" dataSource="@ViewBag.recenttransaction" gridLines="None">
+						<e-grid-columns>
+						<e-grid-column headerText="Category" field="categorytitlewithicon"></e-grid-column>
+						<e-grid-column headerText="date" field="date" type="date" format="MMM-dd-yy"></e-grid-column>
+						<e-grid-column headerText="amount" field="formattedamount" textalign="Right"></e-grid-column>
+						</e-grid-columns>
+					</ejs-grid>
+					</div>
+					
+				</div>
+
+			</div>
+			<div class="col-md-7">
+				<div class="widget h-100">
+					
+					<div class="d-flex justify-content-center align-items-center h-100">
+						<span>Add Widget</span>
+					</div>
+				</div>
+
+			</div>
+			</div>

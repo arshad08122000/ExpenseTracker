@@ -1,0 +1,43 @@
+﻿
+@model ExpenseTracker.Models.Transaction
+@{
+	ViewData["PageTitle"]=Model.transactionid==0?"Create Transaction":"Edit Transaction";
+}
+
+<div class="row">
+
+	<div class="col-md-7 mt-5">
+		<div class="widget p-5">
+			<form asp-action="AddOrEdit">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<input type="hidden" name="transactionid" value="@Model.transactionid"/>
+					<div class="mb-3">
+						<ejs-datepicker id="date" ejs-for="date" placeholder="date" floatLabelType="Always" format="MMM-dd-yy"></ejs-datepicker>
+						<span asp-validation-for="date" class="text-danger"></span>
+					</div>
+					<div class="mb-3">
+						<ejs-dropdownlist id="ddlcategory" ejs-for="categoryid" placeholder="category" floatLabelType="Always" dataSource="@ViewBag.categories" popupHeight="220px" filterType="Contains" allowFiltering="true" ignoreAccent="true">
+							<e-dropdownlist-fields value="categoryid" text="titlewithicon"></e-dropdownlist-fields>
+						</ejs-dropdownlist>
+						
+					</div>
+					<div class="mb-3">
+						<ejs-numerictextbox id="amount" ejs-for="amount" floatLabelType="Always" min="0" format="c0" placeholder="amount"></ejs-numerictextbox>
+						<span asp-validation-for="amount" class="text-danger" fs-6></span>
+				    </div>
+					<div class="mb-3">
+						<ejs-textbox id="note" placeholder="note" ejs-for="note" floatLabelType="Always"></ejs-textbox>
+						<span asp-validation-for="note" class="text-danger"></span>
+					</div>
+					<div class="mb-3">
+						 <ejs-button id="submit" cssClass="e-success" type="submit" content="Submit"></ejs-button>
+					</div>
+		    </form>
+		</div>
+	</div>
+	<div class="col-md-5 mt-5">
+		 <div class="widget h-70 d-flex justify-content-center align-item-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" ><path d="M160 224H416L288 0 160 224zm128 48V496H512V272H288zM128 512c70.7 0 128-57.3 128-128s-57.3-128-128-128S0 313.3 0 384s57.3 128 128 128z"/></svg>
+        </div>
+	</div>
+</div>
