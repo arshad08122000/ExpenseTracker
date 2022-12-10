@@ -10,4 +10,5 @@ A Asp.net Web App to monitor the expenses and incomes
 4)User's transaction based on this two models either a expense or income
 
 Tools and framework used :-
-#Asp.net,.net core,Entity Framework,Syncfusion components
+
+Asp.net,.net core,Entity Framework,Syncfusion components
